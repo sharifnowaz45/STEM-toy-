@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>BrainSpark Kids – STEM Toys & Kits</title>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700;900&family=Fredoka+One&display=swap" rel="stylesheet"/>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Nunito', sans-serif; background: #FFF8F0; color: #2C1A0E; overflow-x: hidden; }
+
+    /* NAV */
+    .nav { background: #FF6B35; padding: 14px 28px; display: flex; justify-content: space-between; align-items: center; position: sticky; top: 0; z-index: 100; }
+    .nav-logo { font-family: 'Fredoka One', cursive; font-size: 24px; color: #fff; letter-spacing: 1px; }
+    .nav-cta { background: #FFE14D; color: #2C1A0E; font-family: 'Nunito', sans-serif; font-weight: 900; font-size: 13px; padding: 8px 18px; border-radius: 50px; border: none; cursor: pointer; transition: background 0.2s; }
+    .nav-cta:hover { background: #fff; }
+
+    /* HERO */
+    .hero { background: linear-gradient(135deg, #FF6B35 0%, #FF8E53 55%, #FFC94D 100%); padding: 72px 28px 56px; text-align: center; }
+    .hero-badge { display: inline-block; background: #FFE14D; color: #7A3B00; font-size: 12px; font-weight: 900; padding: 5px 16px; border-radius: 50px; margin-bottom: 20px; text-transform: uppercase; letter-spacing: 1px; }
+    .hero h1 { font-family: 'Fredoka One', cursive; font-size: 56px; color: #fff; line-height: 1.1; margin-bottom: 16px; }
+    .hero h1 span { color: #FFE14D; }
+    .hero-sub { font-size: 18px; color: rgba(255,255,255,0.92); max-width: 520px; margin: 0 auto 32px; line-height: 1.7; }
+    .hero-btns { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+    .btn-primary { background: #FFE14D; color: #2C1A0E; font-family: 'Nunito', sans-serif; font-weight: 900; font-size: 15px; padding: 14px 30px; border-radius: 50px; border: none; cursor: pointer; transition: background 0.2s; }
+    .btn-primary:hover { background: #fff; }
+    .btn-secondary { background: transparent; color: #fff; font-family: 'Nunito', sans-serif; font-weight: 700; font-size: 15px; padding: 14px 30px; border-radius: 50px; border: 2px solid rgba(255,255,255,0.7); cursor: pointer; transition: all 0.2s; }
+    .btn-secondary:hover { border-color: #fff; background: rgba(255,255,255,0.1); }
+    .hero-emojis { font-size: 34px; margin-top: 32px; letter-spacing: 14px; }
+
+    /* TRUST STRIP */
+    .trust { background: #fff; padding: 16px 28px; display: flex; justify-content: center; gap: 36px; flex-wrap: wrap; border-bottom: 2px dashed #FFD580; }
+    .trust-item { display: flex; align-items: center; gap: 8px; font-size: 13px; font-weight: 700; color: #7A3B00; }
+    .trust-item .dot { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; }
+
+    /* SECTION HEADINGS */
+    .section-label { text-align: center; font-family: 'Fredoka One', cursive; font-size: 34px; color: #FF6B35; margin-bottom: 6px; }
+    .section-sub { text-align: center; font-size: 15px; color: #7A3B00; margin-bottom: 32px; }
+
+    /* PRODUCTS */
+    .products { padding: 56px 28px; background: #FFF8F0; }
+    .products-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 22px; max-width: 900px; margin: 0 auto; }
+    .product-card { background: #fff; border-radius: 20px; border: 2.5px solid #FFD580; padding: 22px 18px 18px; text-align: center; position: relative; transition: transform 0.2s; }
+    .product-card:hover { transform: translateY(-4px); }
+    .product-card:nth-child(1) { border-color: #A5D8FF; }
+    .product-card:nth-child(2) { border-color: #B5F2C1; }
+    .product-card:nth-child(3) { border-color: #FFC9C9; }
+    .product-card:nth-child(4) { border-color: #FFD580; }
+    .p-badge { position: absolute; top: 12px; right: 12px; font-size: 11px; font-weight: 900; padding: 3px 10px; border-radius: 50px; }
+    .p-badge.hot { background: #FFD0D0; color: #A32D2D; }
+    .p-badge.new { background: #D0F5E3; color: #0F6E56; }
+    .p-badge.sale { background: #FFE14D; color: #7A3B00; }
+    .p-emoji { font-size: 54px; margin: 10px 0 14px; display: block; }
+    .p-name { font-family: 'Fredoka One', cursive; font-size: 18px; color: #2C1A0E; margin-bottom: 6px; }
+    .p-desc { font-size: 12px; color: #7A6055; line-height: 1.6; margin-bottom: 14px; }
+    .p-price { font-family: 'Fredoka One', cursive; font-size: 24px; color: #FF6B35; margin-bottom: 12px; }
+    .p-old { font-size: 14px; color: #bbb; text-decoration: line-through; margin-left: 6px; font-family: 'Nunito', sans-serif; font-weight: 400; }
+    .p-btn { width: 100%; background: #FF6B35; color: #fff; border: none; border-radius: 50px; font-family: 'Nunito', sans-serif; font-weight: 900; font-size: 14px; padding: 10px; cursor: pointer; transition: background 0.2s; }
+    .p-btn:hover { background: #e85c28; }
+
+    /* WHY US */
+    .why { background: #FF6B35; padding: 56px 28px; }
+    .why .section-label { color: #FFE14D; }
+    .why .section-sub { color: rgba(255,255,255,0.85); }
+    .why-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 18px; max-width: 860px; margin: 0 auto; }
+    .why-card { background: rgba(255,255,255,0.12); border-radius: 18px; border: 1.5px solid rgba(255,255,255,0.25); padding: 24px 18px; text-align: center; }
+    .why-icon { font-size: 38px; margin-bottom: 12px; }
+    .why-title { font-family: 'Fredoka One', cursive; font-size: 17px; color: #FFE14D; margin-bottom: 8px; }
+    .why-text { font-size: 13px; color: rgba(255,255,255,0.85); line-height: 1.6; }
+
+    /* TESTIMONIALS */
+    .reviews { padding: 56px 28px; background: #FFF8F0; }
+    .reviews-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 18px; max-width: 860px; margin: 0 auto; }
+    .review-card { background: #fff; border-radius: 18px; border: 2px solid #FFD580; padding: 20px; }
+    .review-card:nth-child(2) { border-color: #A5D8FF; }
+    .review-card:nth-child(3) { border-color: #B5F2C1; }
+    .r-stars { color: #FF6B35; font-size: 17px; margin-bottom: 10px; }
+    .r-text { font-size: 13px; color: #4A3728; line-height: 1.7; margin-bottom: 14px; }
+    .r-author { display: flex; align-items: center; gap: 10px; }
+    .r-avatar { width: 38px; height: 38px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 20px; flex-shrink: 0; }
+    .r-name { font-weight: 900; font-size: 13px; color: #2C1A0E; }
+    .r-role { font-size: 11px; color: #7A6055; }
+
+    /* CTA BANNER */
+    .cta-banner { background: #FFE14D; padding: 56px 28px; text-align: center; }
+    .cta-banner h2 { font-family: 'Fredoka One', cursive; font-size: 40px; color: #FF6B35; margin-bottom: 12px; }
+    .cta-banner p { font-size: 17px; color: #7A3B00; margin-bottom: 28px; }
+    .cta-banner .btn-main { background: #FF6B35; color: #fff; font-family: 'Nunito', sans-serif; font-weight: 900; font-size: 17px; padding: 16px 40px; border-radius: 50px; border: none; cursor: pointer; transition: background 0.2s; }
+    .cta-banner .btn-main:hover { background: #e85c28; }
+
+    /* FOOTER */
+    .footer { background: #2C1A0E; padding: 28px 28px; text-align: center; }
+    .footer-logo { font-family: 'Fredoka One', cursive; font-size: 24px; color: #FFE14D; margin-bottom: 10px; }
+    .footer-links { display: flex; justify-content: center; gap: 24px; margin: 12px 0; flex-wrap: wrap; }
+    .footer-links a { color: rgba(255,255,255,0.65); font-size: 13px; text-decoration: none; }
+    .footer-links a:hover { color: #FFE14D; }
+    .footer p { font-size: 13px; color: rgba(255,255,255,0.4); margin-top: 8px; }
+
+    /* RESPONSIVE */
+    @media (max-width: 600px) {
+      .hero h1 { font-size: 38px; }
+      .nav-logo { font-size: 20px; }
+      .trust { gap: 16px; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav class="nav">
+    <div class="nav-logo">🧪 BrainSpark Kids</div>
+    <button class="nav-cta" onclick="document.querySelector('.products').scrollIntoView({behavior:'smooth'})">Shop Now</button>
+  </nav>
+
+  <section class="hero">
+    <div class="hero-badge">✨ Toys That Teach & Delight</div>
+    <h1>Make Learning<br><span>Super Fun!</span></h1>
+    <p class="hero-sub">Discover award-winning STEM toys & kits that spark curiosity, build skills, and keep kids excited about learning — ages 3 to 14.</p>
+    <div class="hero-btns">
+      <button class="btn-primary" onclick="document.querySelector('.products').scrollIntoView({behavior:'smooth'})">🛒 Shop All Products</button>
+      <button class="btn-secondary" onclick="document.querySelector('.why').scrollIntoView({behavior:'smooth'})">Why BrainSpark?</button>
+    </div>
+    <div class="hero-emojis">🔬 🤖 🎨 🚀 🧩</div>
+  </section>
+
+  <div class="trust">
+    <div class="trust-item"><div class="dot" style="background:#4CAF50"></div>Free shipping over ৳999</div>
+    <div class="trust-item"><div class="dot" style="background:#FF6B35"></div>10,000+ happy families</div>
+    <div class="trust-item"><div class="dot" style="background:#2196F3"></div>Safe & certified materials</div>
+    <div class="trust-item"><div class="dot" style="background:#9C27B0"></div>30-day easy return</div>
+  </div>
+
+  <section class="products">
+    <p class="section-label">🌟 Best Sellers</p>
+    <p class="section-sub">Handpicked STEM favorites kids absolutely love</p>
+    <div class="products-grid">
+
+      <div class="product-card">
+        <span class="p-badge hot">🔥 Hot</span>
+        <span class="p-emoji">🔭</span>
+        <div class="p-name">Stellar Telescope Kit</div>
+        <div class="p-desc">Explore stars & planets. Includes activity guide & star map. Ages 8+</div>
+        <div class="p-price">৳1,850 <span class="p-old">৳2,400</span></div>
+        <button class="p-btn">Add to Cart</button>
+      </div>
+
+      <div class="product-card">
+        <span class="p-badge new">✨ New</span>
+        <span class="p-emoji">🤖</span>
+        <div class="p-name">Mini Robot Builder</div>
+        <div class="p-desc">Build & code your own robot! 120+ pieces, app-controlled. Ages 7+</div>
+        <div class="p-price">৳2,450</div>
+        <button class="p-btn">Add to Cart</button>
+      </div>
+
+      <div class="product-card">
+        <span class="p-badge sale">💛 Sale</span>
+        <span class="p-emoji">🧪</span>
+        <div class="p-name">Chemistry Lab Set</div>
+        <div class="p-desc">50+ safe experiments at home. Colorful reactions guaranteed! Ages 6+</div>
+        <div class="p-price">৳1,290 <span class="p-old">৳1,700</span></div>
+        <button class="p-btn">Add to Cart</button>
+      </div>
+
+      <div class="product-card">
+        <span class="p-emoji">🧩</span>
+        <div class="p-name">Circuit Puzzle Board</div>
+        <div class="p-desc">Learn electronics through play. 30 circuits, lights up when correct. Ages 5+</div>
+        <div class="p-price">৳1,150</div>
+        <button class="p-btn">Add to Cart</button>
+      </div>
+
+    </div>
+  </section>
+
+  <section class="why">
+    <p class="section-label">💡 Why BrainSpark?</p>
+    <p class="section-sub">More than just toys — we ignite a love for learning</p>
+    <div class="why-grid">
+      <div class="why-card">
+        <div class="why-icon">🏆</div>
+        <div class="why-title">Award-Winning</div>
+        <div class="why-text">Our products are recognized by global STEM education bodies.</div>
+      </div>
+      <div class="why-card">
+        <div class="why-icon">🛡️</div>
+        <div class="why-title">100% Safe</div>
+        <div class="why-text">Non-toxic, BPA-free materials. Tested & certified for all ages.</div>
+      </div>
+      <div class="why-card">
+        <div class="why-icon">📦</div>
+        <div class="why-title">Fast Delivery</div>
+        <div class="why-text">Delivered in 2–5 days all across Bangladesh.</div>
+      </div>
+      <div class="why-card">
+        <div class="why-icon">💬</div>
+        <div class="why-title">Expert Support</div>
+        <div class="why-text">Our team of educators is always here to help you choose.</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="reviews">
+    <p class="section-label">💬 Parent Love</p>
+    <p class="section-sub">Real stories from families across Bangladesh</p>
+    <div class="reviews-grid">
+      <div class="review-card">
+        <div class="r-stars">★★★★★</div>
+        <p class="r-text">"My son literally asks to do science experiments every evening now. The Chemistry Lab Set was the best purchase we've made!"</p>
+        <div class="r-author">
+          <div class="r-avatar" style="background:#FFE14D;">👩</div>
+          <div><div class="r-name">Fatema Begum</div><div class="r-role">Mom of 2 · Dhaka</div></div>
+        </div>
+      </div>
+      <div class="review-card">
+        <div class="r-stars">★★★★★</div>
+        <p class="r-text">"The Mini Robot Builder kept my daughter busy for weeks. She even taught her little brother how it works. Amazing quality!"</p>
+        <div class="r-author">
+          <div class="r-avatar" style="background:#A5D8FF;">👨</div>
+          <div><div class="r-name">Rafiqul Islam</div><div class="r-role">Dad · Chittagong</div></div>
+        </div>
+      </div>
+      <div class="review-card">
+        <div class="r-stars">★★★★★</div>
+        <p class="r-text">"Fast delivery, super safe materials, and kids are obsessed. I've already gifted BrainSpark kits to 4 friends' children!"</p>
+        <div class="r-author">
+          <div class="r-avatar" style="background:#B5F2C1;">👩</div>
+          <div><div class="r-name">Nusrat Jahan</div><div class="r-role">Mom · Sylhet</div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta-banner">
+    <h2>Ready to Spark Some Fun? 🚀</h2>
+    <p>Join 10,000+ families who made learning the highlight of their child's day.</p>
+    <!-- Replace # with your actual Facebook page URL -->
+    <button class="btn-main" onclick="window.open('https://facebook.com/YOUR_PAGE', '_blank')">🛍️ Visit Our Facebook Page</button>
+  </section>
+
+  <footer class="footer">
+    <div class="footer-logo">🧪 BrainSpark Kids</div>
+    <div class="footer-links">
+      <a href="#">About Us</a>
+      <a href="#">Shop</a>
+      <a href="#">Contact</a>
+      <a href="https://facebook.com/YOUR_PAGE" target="_blank">Facebook Page</a>
+      <a href="#">Return Policy</a>
+    </div>
+    <p>© 2026 BrainSpark Kids. Sparking curiosity, one toy at a time. 💛</p>
+  </footer>
+
+</body>
+</html>
